@@ -1,4 +1,4 @@
-package com.example.fitnessapp.ui.notifications;
+package com.example.fitnessapp.ui.workouts;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fitnessapp.R;
 
-public class NotificationsFragment extends Fragment {
+public class WorkoutsFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private WorkoutsViewModel workoutsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        workoutsViewModel =
+                ViewModelProviders.of(this).get(WorkoutsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_workouts, container, false);
+        final TextView textView = root.findViewById(R.id.text_workouts);
+        workoutsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
