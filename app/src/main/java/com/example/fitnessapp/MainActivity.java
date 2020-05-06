@@ -1,16 +1,20 @@
 package com.example.fitnessapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.example.fitnessapp.ui.workouts.WorkoutsFragment;
+
+import com.example.fitnessapp.ui.workouts.addWorkout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-/*        WorkoutsFragment workoutsFragment = new WorkoutsFragment();
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.container,workoutsFragment).commit();*/
 
 
     }
-
+    public void addWorkout(View view){
+        System.out.println("activity_add_workout button pressed");
+      //  Intent intent = new Intent(this, addWorkout().class)
+        Intent intent = new Intent(this, addWorkout.class);
+       startActivity(intent);
+    }
 }
