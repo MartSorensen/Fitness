@@ -10,9 +10,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="recent_workouts">Recent Workouts</string>
     <string name="name_of_exercise_hint">Name of exercise</string>
-    <string name="enter_kg">Enter kg</string>
+    <string name="enter_kg">kg</string>
     <string name="bench_press">Bench press</string>
     <string name="enter">Enter</string>
     <string name="squat">Squat</string>
+    <string name="repetitions">Repetitions</string>
+    <string-array name="workouts">
+        <item></item>
+    </string-array>
+
 
 </resources>

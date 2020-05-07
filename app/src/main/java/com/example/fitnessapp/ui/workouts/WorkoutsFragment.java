@@ -36,4 +36,10 @@ public class WorkoutsFragment extends Fragment {
         return root;
     }
 
+    public void getStrings(){
+
+
+
+    }
+
 }
