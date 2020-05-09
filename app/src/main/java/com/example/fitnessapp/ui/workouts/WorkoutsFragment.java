@@ -1,9 +1,11 @@
 package com.example.fitnessapp.ui.workouts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.fitnessapp.AddNewWorkout;
 import com.example.fitnessapp.R;
+import com.example.fitnessapp.workoutsView;
 
 public class WorkoutsFragment extends Fragment {
 
@@ -25,6 +29,7 @@ public class WorkoutsFragment extends Fragment {
                 ViewModelProviders.of(this).get(WorkoutsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_workouts, container, false);
         final TextView textView = root.findViewById(R.id.text_workouts);
+        final Button btn = root.findViewById(R.id.addWorkoutButton);
         workoutsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -33,13 +38,14 @@ public class WorkoutsFragment extends Fragment {
             }
         });
 
+
+
         return root;
     }
 
-    public void getStrings(){
-
-
-
+    public void goToWorkouts(View v)
+    {
+        Intent intent = new Intent(getActivity(), AddNewWorkout.class);
+        startActivity(intent);
     }
-
 }

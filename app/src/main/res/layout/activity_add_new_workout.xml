@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.workouts.addWorkout">
+    tools:context=".AddNewWorkout">
 
     <EditText
         android:id="@+id/amountOfKgBench"
@@ -17,7 +17,7 @@
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/enter_kg"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.011" />
 
     <EditText
-        android:id="@+id/benchReps"
+        android:id="@+id/amountOfRepsBench"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
@@ -35,7 +35,7 @@
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/repetitions"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewBench"
         app:layout_constraintTop_toBottomOf="@+id/amountOfKgBench" />
@@ -51,14 +51,14 @@
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/enter_kg"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageViewSquat"
-        app:layout_constraintTop_toBottomOf="@+id/benchPressSubmit" />
+        app:layout_constraintTop_toBottomOf="@+id/benchpressSubmit" />
 
     <EditText
-        android:id="@+id/squatReps"
+        android:id="@+id/amountOfRepsSquat"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
@@ -67,7 +67,7 @@
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/repetitions"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewSquat"
         app:layout_constraintTop_toBottomOf="@+id/amountOfKgSquat" />
@@ -97,19 +97,20 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/benchPressSubmit"
+        android:id="@+id/benchpressSubmit"
+        style="@android:style/Widget.Holo.Button"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:onClick="getUserInputBench"
+        android:onClick="enterWorkoutBenchpress"
         android:text="@string/enter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageViewBench"
-        app:layout_constraintTop_toBottomOf="@+id/benchReps" />
+        app:layout_constraintTop_toBottomOf="@+id/amountOfRepsBench" />
 
     <ImageView
         android:id="@+id/imageViewSquat"
@@ -123,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/recycleViewReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -137,16 +138,32 @@
 
     <Button
         android:id="@+id/squatSubmit"
+        style="@android:style/Widget.Holo.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:onClick="enterWorkoutSquat"
         android:text="@string/enter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageViewSquat"
-        app:layout_constraintTop_toBottomOf="@+id/squatReps" />
+        app:layout_constraintTop_toBottomOf="@+id/amountOfRepsSquat" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:onClick="goBack"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycleViewReps"
+        app:layout_constraintVertical_bias="0.916" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

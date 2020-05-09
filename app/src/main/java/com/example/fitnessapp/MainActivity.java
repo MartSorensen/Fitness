@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
-import com.example.fitnessapp.ui.workouts.addWorkout;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void addWorkout(View view){
-        System.out.println("activity_add_workout button pressed");
-      //  Intent intent = new Intent(this, addWorkout().class)
-        Intent intent = new Intent(this, addWorkout.class);
-       startActivity(intent);
+    public void goToWorkouts(View view){
+
+        Intent intent = new Intent(this, workoutsView.class);
+        startActivity(intent);
+
     }
 
 
