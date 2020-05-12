@@ -4,37 +4,43 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+    private NoteViewModel noteViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_profile, R.id.navigation_workouts, R.id.navigation_rutines, R.id.navigation_stats)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
 
+/*        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
 
+        final NoteAdapter adapter = new NoteAdapter();
+        recyclerView.setAdapter(adapter);
+
+        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
+            //will only get called if the activity is in the foreground and will get destroyed after usage
+            @Override
+            public void onChanged(List<Note> notes) {
+                //update view
+                adapter.setNotes(notes);
+            }
+        });*/
 
     }
+
+
     public void goToWorkouts(View view){
 
         Intent intent = new Intent(this, workoutsView.class);
