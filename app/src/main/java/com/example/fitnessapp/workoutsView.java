@@ -14,28 +14,15 @@ import java.util.ArrayList;
 
 public class workoutsView extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private WorkoutsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
   public static ArrayList<com.example.fitnessapp.WorkoutsItems> workoutsList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts_view);
-
-        // Adds back arrow
-       // getActionBar().setDisplayHomeAsUpEnabled(true);
        // workoutsList.add(new WorkoutsItems(R.drawable.bench_press, "0 kg", "0 Rep"));
-
-        // For the recyclerview
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new WorkoutsAdapter(workoutsList);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
-
-
+        buildRecyclerView();
 
         Button addNewWorkoutBtn = (Button)findViewById(R.id.addNewWorkoutButton);
         addNewWorkoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,11 +42,33 @@ public class workoutsView extends AppCompatActivity {
 
             }
         });
-    }
 
-    public void removeWorkout(View view){
-        //workoutsList.remove(1);
-        // TODO
+    }
+    public void buildRecyclerView(){
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new WorkoutsAdapter(workoutsList);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new WorkoutsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                workoutsList.get(position);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                removeItem(position);
+            }
+
+
+        });
+    }
+    public void removeItem(int position){
+        workoutsList.remove(position);
+        mAdapter.notifyItemRemoved(position);
     }
 
 

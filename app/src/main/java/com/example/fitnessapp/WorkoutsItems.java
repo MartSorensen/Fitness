@@ -5,6 +5,7 @@ public class WorkoutsItems {
     private String mText1;
     private String mText2;
 
+
     public WorkoutsItems(int imageResource, String text1, String text2) {
         mImageResource = imageResource;
         mText1 = text1;

@@ -28,9 +28,10 @@
 
   <Button
       android:id="@+id/openWorkoutsButton"
-      android:layout_marginLeft="8dp"
       android:layout_width="190dp"
       android:layout_height="200dp"
+      android:layout_marginLeft="8dp"
+      android:onClick="goToWorkouts"
       android:text="Workouts"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
