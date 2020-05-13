@@ -10,7 +10,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="15dp"
         android:layout_marginTop="40dp"
-        android:text="Welcome to goals fragment"
+        android:text="Welcome to Max Lifts fragment"
         android:id="@+id/textTitle">
     </TextView>
 
@@ -22,25 +22,4 @@
         android:id="@+id/btnNavHome"
         android:text="Home"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnNavHome"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/btnNavProgress"
-        android:text="Progress">
-
-    </Button>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnNavProgress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/btnNavWorkouts"
-        android:text="Workouts">
-
-    </Button>
 </RelativeLayout>

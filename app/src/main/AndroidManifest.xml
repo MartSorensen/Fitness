@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/ftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AddNoteActivity"></activity>
         <activity android:name=".AddNewWorkout" />
         <activity android:name=".workoutsView" />
         <activity
