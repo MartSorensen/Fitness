@@ -6,65 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/note_item"
-            tools:ignore="MissingConstraints" />
-            -->
-
-  <Button
-      android:id="@+id/openWorkoutsButton"
-      android:layout_width="190dp"
-      android:layout_height="200dp"
-      android:layout_marginLeft="8dp"
-      android:onClick="goToWorkouts"
-      android:text="Workouts"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-
-  <Button
-      android:id="@+id/openProgressButton"
-      android:layout_marginRight="8dp"
-      android:layout_width="190dp"
-      android:layout_height="200dp"
-      android:text="Weekly Progress"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-
-  <Button
-      android:id="@+id/openGoalsButton"
-      android:layout_marginRight="8dp"
-      android:layout_width="190dp"
-      android:layout_height="200dp"
-      android:text="Goals"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/openProgressButton"/>
-
-  <Button
-      android:id="@+id/openMaxLiftButton"
-      android:layout_marginLeft="8dp"
-      android:layout_width="190dp"
-      android:layout_height="200dp"
-      android:text="Max Lift"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/openWorkoutsButton"/>
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fitnesstrackerlogo" />
-
+  <androidx.viewpager.widget.ViewPager
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/containter">
+  </androidx.viewpager.widget.ViewPager>
+  
+  <!--
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recycler_view"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:listitem="@layout/note_item"
+          tools:ignore="MissingConstraints" />
+          -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
