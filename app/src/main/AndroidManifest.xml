@@ -9,11 +9,13 @@
         android:roundIcon="@drawable/ftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddNoteActivity"></activity>
+        <activity android:name=".AddEditNoteActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".AddNewWorkout" />
         <activity android:name=".workoutsView" />
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

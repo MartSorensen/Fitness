@@ -37,4 +37,5 @@ public class AddNewWorkout extends AppCompatActivity {
         Intent intent = new Intent(this, workoutsView.class);
         startActivity(intent);
     }
+
 }
