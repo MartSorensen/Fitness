@@ -92,5 +92,6 @@ public class AddEditNoteActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
 }
