@@ -10,27 +10,36 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <TextView
-            android:id="@+id/text_view_priority"
+            android:id="@+id/text_view_repetitions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="30dp"
+            android:text="Repetitions"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
         <TextView
             android:id="@+id/text_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/text_view_priority"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
         <TextView
-            android:id="@+id/text_view_description"
+            android:id="@+id/text_view_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_title"
-            android:text="Description" />
+            android:text="Weight" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

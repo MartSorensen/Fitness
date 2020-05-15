@@ -14,11 +14,13 @@ public class NoteRepository {
 
     private NoteDao noteDao;
     private LiveData<List<Note>> allNotes;
+    private LiveData<List<Note>> allDistinctTitles;
 
     public NoteRepository(Application application) {
         NoteDatabase database = NoteDatabase.getInstance(application);
         noteDao = database.noteDao();
         allNotes = noteDao.getAllNotes();
+       // allDistinctTitles = noteDao.getDistinctTitles();
     }
 
     public void insert(Note note) {
@@ -40,6 +42,8 @@ public class NoteRepository {
     public LiveData<List<Note>> getAllNotes() {
         return allNotes;
     }
+
+   // public LiveData<List<Note>> getDistinctTitles() {return allDistinctTitles; }
 
     //It has to be static so it doesn't have a reference to the repository else it can cause memory leaks
     private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Void> {

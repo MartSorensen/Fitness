@@ -15,7 +15,7 @@ public class AddNewWorkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_workout);
     }
-    public void enterWorkoutBenchpress(View view){
+  /*  public void enterWorkoutBenchpress(View view){
         EditText editText = (EditText) findViewById(R.id.amountOfKgBench);
         EditText editText2 = (EditText) findViewById(R.id.amountOfRepsBench);
         String kg = editText.getText().toString();
@@ -37,5 +37,5 @@ public class AddNewWorkout extends AppCompatActivity {
         Intent intent = new Intent(this, workoutsView.class);
         startActivity(intent);
     }
-
+*/
 }

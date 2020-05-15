@@ -18,14 +18,14 @@ public class AddEditNoteActivity extends AppCompatActivity {
             "com.example.fitnessapp.EXTRA_ID";
     public static final String EXTRA_TITLE =
             "com.example.fitnessapp.EXTRA_TITLE";
-    public static final String EXTRA_DESCRIPTION =
-            "com.example.fitnessapp.EXTRA_DESCRIPTION";
-    public static final String EXTRA_PRIORITY =
-            "com.example.fitnessapp.EXTRA_PRIORITY";
+    public static final String EXTRA_WEIGHT =
+            "com.example.fitnessapp.EXTRA_WEIGHT";
+    public static final String EXTRA_REPETITIONS =
+            "com.example.fitnessapp.EXTRA_REPETITIONS";
 
     private EditText editTextTitle;
-    private EditText editTextDescription;
-    private NumberPicker numberPickerPriority;
+    private EditText editTextWeight;
+    private NumberPicker numberPickerRepetitions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,12 @@ public class AddEditNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_note);
 
         editTextTitle = findViewById(R.id.edit_text_title);
-        editTextDescription = findViewById(R.id.edit_text_description);
-        numberPickerPriority = findViewById(R.id.number_picker_priority);
+        editTextWeight = findViewById(R.id.edit_text_weight);
+        numberPickerRepetitions = findViewById(R.id.number_picker_repetitions);
 
-        numberPickerPriority.setMinValue(1);
-        numberPickerPriority.setMaxValue(10);
+        numberPickerRepetitions.setMinValue(1);
+        numberPickerRepetitions.setMaxValue(20);
+
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -46,8 +47,8 @@ public class AddEditNoteActivity extends AppCompatActivity {
         if (intent.hasExtra(EXTRA_ID)){
             setTitle("Edit Note");
             editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
-            editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
-            numberPickerPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+            editTextWeight.setText(intent.getStringExtra(EXTRA_WEIGHT));
+            numberPickerRepetitions.setValue(intent.getIntExtra(EXTRA_REPETITIONS, 1));
         } else {
             setTitle("Add Note");
         }
@@ -55,18 +56,18 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
     private  void saveNote() {
         String title = editTextTitle.getText().toString();
-        String description = editTextDescription.getText().toString();
-        int priority = numberPickerPriority.getValue();
+        String weight = editTextWeight.getText().toString();
+        int repetitions = numberPickerRepetitions.getValue();
 
-        if (title.trim().isEmpty() || description.trim().isEmpty()) {
+        if (title.trim().isEmpty() || weight.trim().isEmpty()) {
             Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
             return;
         }
 
         Intent data = new Intent();
         data.putExtra(EXTRA_TITLE, title);
-        data.putExtra(EXTRA_DESCRIPTION, description);
-        data.putExtra(EXTRA_PRIORITY, priority);
+        data.putExtra(EXTRA_WEIGHT, weight);
+        data.putExtra(EXTRA_REPETITIONS, repetitions);
 
         int id = getIntent().getIntExtra(EXTRA_ID, 1);
         if (id != -1){

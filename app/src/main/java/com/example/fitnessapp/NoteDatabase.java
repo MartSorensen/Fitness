@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 
-@Database(entities = Note.class, version = 1, exportSchema = false)
+@Database(entities = Note.class, version = 3, exportSchema = false)
 public abstract class NoteDatabase extends RoomDatabase {
 
     //Used to access singleton database
@@ -35,23 +35,23 @@ public abstract class NoteDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsyncTask(instance).execute();
+           // new PopulateDbAsyncTask(instance).execute();
         }
     };
 
-    private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
+  /*  private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private NoteDao noteDao;
 
         private PopulateDbAsyncTask(NoteDatabase db) {
             noteDao = db.noteDao();
         }
 
-        @Override
+    @Override
         protected Void doInBackground(Void... voids) {
-            noteDao.insert(new Note("Title 1", "Description 1", 1));
-            noteDao.insert(new Note("Title 2", "Description 2", 2));
-            noteDao.insert(new Note("Title 3", "Description 3", 3));
+            noteDao.insert(new Note("Bench", "50 kg", 1));
+            noteDao.insert(new Note("Bicep curls", "70 kg", 2));
+            noteDao.insert(new Note("Death lift", "30 kg", 3));
             return null;
         }
-    }
+    }*/
 }

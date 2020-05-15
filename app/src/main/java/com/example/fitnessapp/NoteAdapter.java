@@ -28,9 +28,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     @Override
     public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
         Note currentNote = notes.get(position);
-        holder.textViewTitle.setText(currentNote.getDescription());
-        holder.textViewDescription.setText(currentNote.getDescription());
-        holder.textViewPriority.setText(String.valueOf(currentNote.getPriority()));
+        holder.textViewTitle.setText(currentNote.getTitle());
+        holder.textViewWeight.setText(currentNote.getWeight());
+        holder.textViewRepetitions.setText(String.valueOf(currentNote.getRepetitions()));
     }
 
     @Override
@@ -50,15 +50,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
     class NoteHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
-        private TextView textViewDescription;
-        private TextView textViewPriority;
+        private TextView textViewWeight;
+        private TextView textViewRepetitions;
 
 
         public NoteHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
-            textViewDescription = itemView.findViewById(R.id.text_view_description);
-            textViewPriority = itemView.findViewById(R.id.text_view_priority);
+            textViewWeight = itemView.findViewById(R.id.text_view_weight);
+            textViewRepetitions = itemView.findViewById(R.id.text_view_repetitions);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -10,13 +10,13 @@ public class Note {
     private int id;
 
     private String title;
-    private String description;
-    private int priority;
+    private String weight;
+    private int repetitions;
 
-    public Note(String title, String description, int priority) {
+    public Note(String title, String weight, int repetitions) {
         this.title = title;
-        this.description = description;
-        this.priority = priority;
+        this.weight = weight;
+        this.repetitions = repetitions;
     }
 
     public void setId(int id) {
@@ -31,11 +31,12 @@ public class Note {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getWeight() {
+        return weight;
     }
 
-    public int getPriority() {
-        return priority;
+    public int getRepetitions() {
+        return repetitions;
     }
+
 }

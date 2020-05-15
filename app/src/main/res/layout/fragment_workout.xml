@@ -48,7 +48,7 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
   -->
-    <Button
+  <!--  <Button
         android:id="@+id/addNewWorkoutButton"
         android:layout_width="135dp"
         android:layout_height="70dp"
@@ -58,7 +58,7 @@
         android:text="Add new workout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+    -->
     <Button
         android:layout_width="135dp"
         android:layout_height="70dp"
@@ -67,7 +67,7 @@
         android:id="@+id/btnNavHome"
         android:text="Home"/>
 
-
+<!--
     <Button
         android:id="@+id/clearWorkouts"
         android:layout_width="135dp"
@@ -79,5 +79,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/addNewWorkoutButton" />
-
+    -->
 </RelativeLayout>

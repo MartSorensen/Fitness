@@ -45,7 +45,7 @@ public class WorkoutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_workout, container, false);
         btnNavHome = (Button) view.findViewById(R.id.btnNavHome);
-        Button addNewWorkoutBtn = (Button)view.findViewById(R.id.addNewWorkoutButton);
+       // Button addNewWorkoutBtn = (Button)view.findViewById(R.id.addNewWorkoutButton);
        // buildRecyclerView();
 
        FloatingActionButton buttonAddNote = view.findViewById(R.id.button_add_note);
@@ -94,20 +94,20 @@ public class WorkoutFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), AddEditNoteActivity.class);
                 intent.putExtra(AddEditNoteActivity.EXTRA_ID, note.getId());
                 intent.putExtra(AddEditNoteActivity.EXTRA_TITLE, note.getTitle());
-                intent.putExtra(AddEditNoteActivity.EXTRA_DESCRIPTION, note.getDescription());
-                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY, note.getPriority());
+                intent.putExtra(AddEditNoteActivity.EXTRA_WEIGHT, note.getWeight());
+                intent.putExtra(AddEditNoteActivity.EXTRA_REPETITIONS, note.getRepetitions());
                 startActivityForResult(intent, EDIT_NOTE_REQUEST);
             }
         });
 
-        addNewWorkoutBtn.setOnClickListener(new View.OnClickListener() {
+     /*   addNewWorkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getActivity(), AddNewWorkout.class);
                 startActivity(startIntent);
 
-            }
-        });
+            } */
+     /*   });
         Button clearWorkoutsBtn = (Button)view.findViewById(R.id.clearWorkouts);
         clearWorkoutsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +116,7 @@ public class WorkoutFragment extends Fragment {
                 mAdapter.notifyDataSetChanged();
 
             }
-        });
+        }); */
 
         btnNavHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,10 +132,10 @@ public class WorkoutFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
-            int priority = data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1);
+            String weight = data.getStringExtra(AddEditNoteActivity.EXTRA_WEIGHT);
+            int repetitions = data.getIntExtra(AddEditNoteActivity.EXTRA_REPETITIONS, 1);
 
-            Note note = new Note(title, description, priority);
+            Note note = new Note(title, weight, repetitions);
             noteViewModel.insert(note);
 
             Toast.makeText(getContext(), "Note saved", Toast.LENGTH_SHORT).show();
@@ -147,10 +147,10 @@ public class WorkoutFragment extends Fragment {
             }
 
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
-            int priority = data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1);
+            String weight = data.getStringExtra(AddEditNoteActivity.EXTRA_WEIGHT);
+            int repetitions = data.getIntExtra(AddEditNoteActivity.EXTRA_REPETITIONS, 1);
 
-            Note note = new Note(title, description, priority);
+            Note note = new Note(title, weight, repetitions);
             note.setId(id);
             noteViewModel.update(note);
             Toast.makeText(getContext(), "Note updated", Toast.LENGTH_SHORT).show();
