@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/btnNavWorkouts"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/note_item">
+        tools:listitem="@layout/workout_item">
     </androidx.recyclerview.widget.RecyclerView>
     <Button
         android:layout_width="135dp"

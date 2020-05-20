@@ -21,7 +21,7 @@ public class MaxLiftsFragment extends Fragment {
 
     private Button btnNavHome;
 
-    private NoteViewModel noteViewModel;
+    private WorkoutViewModel workoutViewModel;
 
     @Nullable
     @Override
@@ -41,16 +41,16 @@ public class MaxLiftsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        final NoteAdapter adapter = new NoteAdapter();
+        final WorkoutAdapter adapter = new WorkoutAdapter();
         recyclerView.setAdapter(adapter);
 
-        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
-        noteViewModel.getAllNotesByWeight().observe(this, new Observer<List<Note>>() {
+        workoutViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        workoutViewModel.getAllDistinctTitles().observe(this, new Observer<List<Workout>>() {
             //will only get called if the activity is in the foreground and will get destroyed after usage
             @Override
-            public void onChanged(List<Note> notes) {
+            public void onChanged(List<Workout> workouts) {
                 //update view
-                adapter.setNotes(notes);
+                adapter.setWorkouts(workouts);
             }
         });
 

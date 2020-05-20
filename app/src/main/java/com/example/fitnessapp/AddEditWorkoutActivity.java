@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddEditNoteActivity extends AppCompatActivity {
+public class AddEditWorkoutActivity extends AppCompatActivity {
     public static final String EXTRA_ID =
             "com.example.fitnessapp.EXTRA_ID";
     public static final String EXTRA_TITLE =
@@ -30,7 +30,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_note);
+        setContentView(R.layout.activity_add_workout);
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextWeight = findViewById(R.id.edit_text_weight);
@@ -45,22 +45,22 @@ public class AddEditNoteActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if (intent.hasExtra(EXTRA_ID)){
-            setTitle("Edit Note");
+            setTitle("Edit Workout");
             editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             editTextWeight.setText(intent.getStringExtra(EXTRA_WEIGHT));
             numberPickerRepetitions.setValue(intent.getIntExtra(EXTRA_REPETITIONS, 1));
         } else {
-            setTitle("Add Note");
+            setTitle("Add Workout");
         }
     }
 
-    private  void saveNote() {
+    private  void saveWorkout() {
         String title = editTextTitle.getText().toString();
         String weight = editTextWeight.getText().toString();
         int repetitions = numberPickerRepetitions.getValue();
 
         if (title.trim().isEmpty() || weight.trim().isEmpty()) {
-            Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please insert a title and weight", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -80,15 +80,15 @@ public class AddEditNoteActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.add_note_menu, menu);
+        menuInflater.inflate(R.menu.add_workout_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.save_node:
-                saveNote();
+            case R.id.save_workout:
+                saveWorkout();
                 return  true;
             default:
                 return super.onOptionsItemSelected(item);

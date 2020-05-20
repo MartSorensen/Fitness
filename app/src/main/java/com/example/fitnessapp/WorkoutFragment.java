@@ -27,12 +27,12 @@ import static android.app.Activity.RESULT_OK;
 
 public class WorkoutFragment extends Fragment {
     private static final String TAG = "WorkoutFragment";
-    public static final int ADD_NOTE_REQUEST = 1;
-    public static final int EDIT_NOTE_REQUEST = 2;
+    public static final int ADD_WORKOUT_REQUEST = 1;
+    public static final int EDIT_WORKOUT_REQUEST = 2;
 
     private Button btnNavHome;
 
-    private NoteViewModel noteViewModel;
+    private WorkoutViewModel workoutViewModel;
 
     private RecyclerView mRecyclerView;
     private GoalsAdapter mAdapter;
@@ -45,15 +45,13 @@ public class WorkoutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_workout, container, false);
         btnNavHome = (Button) view.findViewById(R.id.btnNavHome);
-       // Button addNewWorkoutBtn = (Button)view.findViewById(R.id.addNewWorkoutButton);
-       // buildRecyclerView();
 
-       FloatingActionButton buttonAddNote = view.findViewById(R.id.button_add_note);
-        buttonAddNote.setOnClickListener(new View.OnClickListener() {
+       FloatingActionButton buttonAddWorkout = view.findViewById(R.id.button_add_workout);
+        buttonAddWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddEditNoteActivity.class);
-                startActivityForResult(intent, ADD_NOTE_REQUEST);
+                Intent intent = new Intent(getActivity(), AddEditWorkoutActivity.class);
+                startActivityForResult(intent, ADD_WORKOUT_REQUEST);
             }
         });
         //Database recyclerView display
@@ -61,16 +59,16 @@ public class WorkoutFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        final NoteAdapter adapter = new NoteAdapter();
+        final WorkoutAdapter adapter = new WorkoutAdapter();
         recyclerView.setAdapter(adapter);
 
-        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
-        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
+        workoutViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        workoutViewModel.getAllWorkouts().observe(this, new Observer<List<Workout>>() {
             //will only get called if the activity is in the foreground and will get destroyed after usage
             @Override
-            public void onChanged(List<Note> notes) {
+            public void onChanged(List<Workout> workouts) {
                 //update view
-                adapter.setNotes(notes);
+                adapter.setWorkouts(workouts);
             }
         });
 
@@ -83,40 +81,23 @@ public class WorkoutFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                noteViewModel.delete(adapter.getNoteAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(getContext(),"Note deleted", Toast.LENGTH_SHORT).show();
+                workoutViewModel.delete(adapter.getWorkoutAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(),"Workout deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
-        adapter.setOnItemClickListener(new NoteAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new WorkoutAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Note note) {
-                Intent intent = new Intent(getActivity(), AddEditNoteActivity.class);
-                intent.putExtra(AddEditNoteActivity.EXTRA_ID, note.getId());
-                intent.putExtra(AddEditNoteActivity.EXTRA_TITLE, note.getTitle());
-                intent.putExtra(AddEditNoteActivity.EXTRA_WEIGHT, note.getWeight());
-                intent.putExtra(AddEditNoteActivity.EXTRA_REPETITIONS, note.getRepetitions());
-                startActivityForResult(intent, EDIT_NOTE_REQUEST);
+            public void onItemClick(Workout workout) {
+                Intent intent = new Intent(getActivity(), AddEditWorkoutActivity.class);
+                intent.putExtra(AddEditWorkoutActivity.EXTRA_ID, workout.getId());
+                intent.putExtra(AddEditWorkoutActivity.EXTRA_TITLE, workout.getTitle());
+                intent.putExtra(AddEditWorkoutActivity.EXTRA_WEIGHT, workout.getWeight());
+                intent.putExtra(AddEditWorkoutActivity.EXTRA_REPETITIONS, workout.getRepetitions());
+                startActivityForResult(intent, EDIT_WORKOUT_REQUEST);
             }
         });
 
-     /*   addNewWorkoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(getActivity(), AddNewWorkout.class);
-                startActivity(startIntent);
-
-            } */
-     /*   });
-        Button clearWorkoutsBtn = (Button)view.findViewById(R.id.clearWorkouts);
-        clearWorkoutsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workoutsList.clear();
-                mAdapter.notifyDataSetChanged();
-
-            }
-        }); */
 
         btnNavHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,62 +111,35 @@ public class WorkoutFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
-            String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
-            String weight = data.getStringExtra(AddEditNoteActivity.EXTRA_WEIGHT);
-            int repetitions = data.getIntExtra(AddEditNoteActivity.EXTRA_REPETITIONS, 1);
+        if(requestCode == ADD_WORKOUT_REQUEST && resultCode == RESULT_OK) {
+            String title = data.getStringExtra(AddEditWorkoutActivity.EXTRA_TITLE);
+            String weight = data.getStringExtra(AddEditWorkoutActivity.EXTRA_WEIGHT);
+            int repetitions = data.getIntExtra(AddEditWorkoutActivity.EXTRA_REPETITIONS, 1);
 
-            Note note = new Note(title, weight, repetitions);
-            noteViewModel.insert(note);
+            Workout workout = new Workout(title, weight, repetitions);
+            workoutViewModel.insert(workout);
 
-            Toast.makeText(getContext(), "Note saved", Toast.LENGTH_SHORT).show();
-        }  else if(requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK){
-            int id = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, -1);
+            Toast.makeText(getContext(), "Workout saved", Toast.LENGTH_SHORT).show();
+        }  else if(requestCode == EDIT_WORKOUT_REQUEST && resultCode == RESULT_OK){
+            int id = data.getIntExtra(AddEditWorkoutActivity.EXTRA_ID, -1);
 
             if (id == -1) {
-                Toast.makeText(getContext(), "Note Can't be updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Workout Can't be updated", Toast.LENGTH_SHORT).show();
             }
 
-            String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
-            String weight = data.getStringExtra(AddEditNoteActivity.EXTRA_WEIGHT);
-            int repetitions = data.getIntExtra(AddEditNoteActivity.EXTRA_REPETITIONS, 1);
+            String title = data.getStringExtra(AddEditWorkoutActivity.EXTRA_TITLE);
+            String weight = data.getStringExtra(AddEditWorkoutActivity.EXTRA_WEIGHT);
+            int repetitions = data.getIntExtra(AddEditWorkoutActivity.EXTRA_REPETITIONS, 1);
 
-            Note note = new Note(title, weight, repetitions);
-            note.setId(id);
-            noteViewModel.update(note);
-            Toast.makeText(getContext(), "Note updated", Toast.LENGTH_SHORT).show();
+            Workout workout = new Workout(title, weight, repetitions);
+            workout.setId(id);
+            workoutViewModel.update(workout);
+            Toast.makeText(getContext(), "Workout updated", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(getContext(), "Note not saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Workout not saved", Toast.LENGTH_SHORT).show();
         }
     }
 
-
-    /*public void buildRecyclerView(){
-        mRecyclerView = getActivity().findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(mRecyclerView.getContext());
-        mAdapter = new GoalsAdapter(workoutsList);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
-        mAdapter.setOnItemClickListener(new GoalsAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                workoutsList.get(position);
-            }
-
-            @Override
-            public void onDeleteClick(int position) {
-                removeItem(position);
-            }
-
-
-        });
-    }
-    public void removeItem(int position){
-        workoutsList.remove(position);
-        mAdapter.notifyItemRemoved(position);
-    }*/
 }
 

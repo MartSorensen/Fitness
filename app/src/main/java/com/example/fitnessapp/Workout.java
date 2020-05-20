@@ -2,10 +2,11 @@ package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "note_table")
-public class Note {
+@Entity(tableName = "workout_table")
+public class Workout {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -15,7 +16,7 @@ public class Note {
     private String weight;
     private int repetitions;
 
-    public Note(String title, String weight, int repetitions) {
+    public Workout(String title, String weight, int repetitions) {
         this.title = title;
         this.weight = weight;
         this.repetitions = repetitions;

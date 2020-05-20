@@ -14,14 +14,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class MainActivity extends AppCompatActivity {
-   // public static final int ADD_NOTE_REQUEST = 1;
     private static final String TAG = "MainActivity";
 
     private SectionsStatePagerAdapter mSectionStatePagerAdapter;
     private ViewPager mViewPager;
 
 
-    private NoteViewModel noteViewModel;
+    private WorkoutViewModel workoutViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

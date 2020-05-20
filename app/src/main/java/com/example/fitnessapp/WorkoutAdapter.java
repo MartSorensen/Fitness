@@ -13,48 +13,48 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
-    private List<Note> notes = new ArrayList<>();
+public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutHolder> {
+    private List<Workout> workouts = new ArrayList<>();
     private OnItemClickListener listener;
 
     @NonNull
     @Override
-    public NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public WorkoutHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.note_item, parent, false);
-        return new NoteHolder(itemView);
+                .inflate(R.layout.workout_item, parent, false);
+        return new WorkoutHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
-        Note currentNote = notes.get(position);
-        holder.textViewTitle.setText(currentNote.getTitle());
-        holder.textViewWeight.setText(currentNote.getWeight());
-        holder.textViewRepetitions.setText(String.valueOf(currentNote.getRepetitions()));
+    public void onBindViewHolder(@NonNull WorkoutHolder holder, int position) {
+        Workout currentWorkout = workouts.get(position);
+        holder.textViewTitle.setText(currentWorkout.getTitle());
+        holder.textViewWeight.setText(currentWorkout.getWeight());
+        holder.textViewRepetitions.setText(String.valueOf(currentWorkout.getRepetitions()));
     }
 
     @Override
     public int getItemCount() {
-        return notes.size();
+        return workouts.size();
     }
 
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
+    public void setWorkouts(List<Workout> workouts) {
+        this.workouts = workouts;
         notifyDataSetChanged();
     }
 
-    public Note getNoteAt(int position) {
-        return notes.get(position);
+    public Workout getWorkoutAt(int position) {
+        return workouts.get(position);
     }
 
 
-    class NoteHolder extends RecyclerView.ViewHolder {
+    class WorkoutHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewWeight;
         private TextView textViewRepetitions;
 
 
-        public NoteHolder(View itemView) {
+        public WorkoutHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewWeight = itemView.findViewById(R.id.text_view_weight);
@@ -65,7 +65,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
                 public void onClick(View v) {
                     int posistion = getAdapterPosition();
                     if (listener != null && posistion != RecyclerView.NO_POSITION){
-                        listener.onItemClick(notes.get(posistion));
+                        listener.onItemClick(workouts.get(posistion));
                     }
                 }
             });
@@ -73,7 +73,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Note note);
+        void onItemClick(Workout workout);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
