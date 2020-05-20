@@ -12,7 +12,7 @@
         <activity android:name=".AddEditNoteActivity"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".AddNewWorkout" />
-        <activity android:name=".workoutsView" />
+        <activity android:name=".goalsView" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

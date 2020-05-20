@@ -13,14 +13,14 @@ public class AddNewWorkout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_workout);
+        setContentView(R.layout.activity_add_new_goal);
     }
-  /*  public void enterWorkoutBenchpress(View view){
+    public void enterWorkoutBenchpress(View view){
         EditText editText = (EditText) findViewById(R.id.amountOfKgBench);
         EditText editText2 = (EditText) findViewById(R.id.amountOfRepsBench);
         String kg = editText.getText().toString();
         String reps = editText2.getText().toString();
-        workoutsView.workoutsList.add(new WorkoutsItems(R.drawable.bench_press, kg+" kg", reps+"reps"));
+        goalsView.goalsList.add(new GoalsItems(R.drawable.bench_press, kg+" kg", reps+" Reps"));
 
 
     }
@@ -29,13 +29,13 @@ public class AddNewWorkout extends AppCompatActivity {
         EditText editText2 = (EditText) findViewById(R.id.amountOfRepsSquat);
         String kg = editText.getText().toString();
         String reps = editText2.getText().toString();
-        workoutsView.workoutsList.add(new WorkoutsItems(R.drawable.squat, kg+" kg", reps+"reps"));
+        goalsView.goalsList.add(new GoalsItems(R.drawable.squat, kg+" kg",   reps+" Reps"));
 
 
     }
     public void goBack(View view){
-        Intent intent = new Intent(this, workoutsView.class);
+        Intent intent = new Intent(this, goalsView.class);
         startActivity(intent);
     }
-*/
+
 }

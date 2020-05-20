@@ -1,5 +1,6 @@
 package com.example.fitnessapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,8 @@ public class HomeFragment extends Fragment {
         btnNavGoals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).setViewPager(4);
+                Intent intent = new Intent(getActivity(), goalsView.class);
+                startActivity(intent);
             }
         });
 

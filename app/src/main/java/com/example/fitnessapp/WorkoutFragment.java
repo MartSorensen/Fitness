@@ -35,9 +35,9 @@ public class WorkoutFragment extends Fragment {
     private NoteViewModel noteViewModel;
 
     private RecyclerView mRecyclerView;
-    private WorkoutsAdapter mAdapter;
+    private GoalsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    public static ArrayList<WorkoutsItems> workoutsList = new ArrayList<>();
+    public static ArrayList<GoalsItems> workoutsList = new ArrayList<>();
 
 
     @Nullable
@@ -165,11 +165,11 @@ public class WorkoutFragment extends Fragment {
         mRecyclerView = getActivity().findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(mRecyclerView.getContext());
-        mAdapter = new WorkoutsAdapter(workoutsList);
+        mAdapter = new GoalsAdapter(workoutsList);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemClickListener(new WorkoutsAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new GoalsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 workoutsList.get(position);

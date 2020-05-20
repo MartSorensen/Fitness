@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,19 +11,19 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class workoutsView extends AppCompatActivity {
+public class goalsView extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private WorkoutsAdapter mAdapter;
+    private GoalsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-  public static ArrayList<com.example.fitnessapp.WorkoutsItems> workoutsList = new ArrayList<>();
+  public static ArrayList<GoalsItems> goalsList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workouts_view);
-       // workoutsList.add(new WorkoutsItems(R.drawable.bench_press, "0 kg", "0 Rep"));
+        setContentView(R.layout.activity_goals_view);
+       // workoutsList.add(new GoalsItems(R.drawable.bench_press, "0 kg", "0 Rep"));
         buildRecyclerView();
 
-        Button addNewWorkoutBtn = (Button)findViewById(R.id.addNewWorkoutButton);
+        Button addNewWorkoutBtn = (Button)findViewById(R.id.addNewGoalButton);
         addNewWorkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,11 +32,11 @@ public class workoutsView extends AppCompatActivity {
 
             }
         });
-        Button clearWorkoutsBtn = (Button)findViewById(R.id.clearWorkouts);
+        Button clearWorkoutsBtn = (Button)findViewById(R.id.clearGoals);
         clearWorkoutsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workoutsList.clear();
+                goalsList.clear();
                 mAdapter.notifyDataSetChanged();
 
             }
@@ -48,14 +47,14 @@ public class workoutsView extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new WorkoutsAdapter(workoutsList);
+        mAdapter = new GoalsAdapter(goalsList);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemClickListener(new WorkoutsAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new GoalsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                workoutsList.get(position);
+                goalsList.get(position);
             }
 
             @Override
@@ -67,7 +66,7 @@ public class workoutsView extends AppCompatActivity {
         });
     }
     public void removeItem(int position){
-        workoutsList.remove(position);
+        goalsList.remove(position);
         mAdapter.notifyItemRemoved(position);
     }
 
