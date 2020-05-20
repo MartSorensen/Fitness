@@ -9,11 +9,19 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class MaxLiftsFragment extends Fragment {
     private static final String TAG = "MaxLiftsFragment";
 
     private Button btnNavHome;
+
+    private NoteViewModel noteViewModel;
 
     @Nullable
     @Override
@@ -25,6 +33,24 @@ public class MaxLiftsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).setViewPager(0);
+            }
+        });
+
+        //Database recyclerView display
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_maxLifts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setHasFixedSize(true);
+
+        final NoteAdapter adapter = new NoteAdapter();
+        recyclerView.setAdapter(adapter);
+
+        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        noteViewModel.getAllNotesByWeight().observe(this, new Observer<List<Note>>() {
+            //will only get called if the activity is in the foreground and will get destroyed after usage
+            @Override
+            public void onChanged(List<Note> notes) {
+                //update view
+                adapter.setNotes(notes);
             }
         });
 

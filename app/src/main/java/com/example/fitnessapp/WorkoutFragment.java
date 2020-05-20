@@ -57,7 +57,7 @@ public class WorkoutFragment extends Fragment {
             }
         });
         //Database recyclerView display
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_workout);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
 

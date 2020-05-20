@@ -30,6 +30,9 @@ public interface NoteDao {
   //  @Query("SELECT * FROM note_table ORDER BY repetitions DESC")
    // LiveData<List<Note>> getAllNotesByRepetitions();
 
-//    @Query("SELECT DISTINCT title FROM note_table")
-  //  LiveData<List<Note>> getDistinctTitles();
+    @Query("SELECT * FROM note_table ORDER BY weight DESC")
+    LiveData<List<Note>> getAllNotedByWeight();
+
+
+    //LiveData<List<Note>> getDistinctTitles();
 }

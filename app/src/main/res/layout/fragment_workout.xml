@@ -17,7 +17,7 @@
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_workout"
         android:layout_width="match_parent"
         android:layout_below="@+id/btnNavWorkouts"
         android:layout_height="wrap_content"

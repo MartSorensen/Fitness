@@ -1,11 +1,13 @@
 package com.example.fitnessapp;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "note_table")
 public class Note {
 
+    @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
 
