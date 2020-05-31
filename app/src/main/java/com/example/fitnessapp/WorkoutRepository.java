@@ -15,13 +15,11 @@ public class WorkoutRepository {
     private WorkoutDao workoutDao;
     private LiveData<List<Workout>> allWorkouts;
     private LiveData<List<Workout>> allDistinctTitles;
-    private LiveData<List<Workout>> allWorkoutsByWeight;
 
     public WorkoutRepository(Application application) {
         WorkoutDatabase database = WorkoutDatabase.getInstance(application);
         workoutDao = database.workoutDao();
         allWorkouts = workoutDao.getAllWorkouts();
-        allWorkoutsByWeight = workoutDao.getAllWorkoutsByWeight();
         allDistinctTitles = workoutDao.getDistinctTitles();
     }
 
@@ -37,16 +35,8 @@ public class WorkoutRepository {
         new DeleteWorkoutAsyncTask(workoutDao).execute(workout);
     }
 
-    public void deleteAllWorkouts() {
-        new DeleteAllWorkoutsAsyncTask(workoutDao).execute();
-    }
-
     public LiveData<List<Workout>> getAllWorkouts() {
         return allWorkouts;
-    }
-
-    public LiveData<List<Workout>> getAllWorkoutsByWeight() {
-        return  allWorkoutsByWeight;
     }
 
     public LiveData<List<Workout>> getDistinctTitles() {return allDistinctTitles; }
@@ -90,20 +80,6 @@ public class WorkoutRepository {
         @Override
         protected Void doInBackground(Workout... workouts) {
             workoutDao.delete(workouts[0]);
-            return null;
-        }
-    }
-
-    private static class DeleteAllWorkoutsAsyncTask extends AsyncTask<Void, Void, Void> {
-        private WorkoutDao workoutDao;
-
-        private DeleteAllWorkoutsAsyncTask(WorkoutDao workoutDao) {
-            this.workoutDao = workoutDao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            workoutDao.deleteAllWorkouts();
             return null;
         }
     }

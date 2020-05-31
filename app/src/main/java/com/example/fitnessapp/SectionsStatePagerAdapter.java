@@ -1,6 +1,5 @@
 package com.example.fitnessapp;
 
-import android.icu.text.CaseMap;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

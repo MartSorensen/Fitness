@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class AddNewWorkout extends AppCompatActivity {
+public class AddNewGoal extends AppCompatActivity {
 
 
     @Override
@@ -20,7 +20,7 @@ public class AddNewWorkout extends AppCompatActivity {
         EditText editText2 = (EditText) findViewById(R.id.amountOfRepsBench);
         String kg = editText.getText().toString();
         String reps = editText2.getText().toString();
-        goalsView.goalsList.add(new GoalsItems(R.drawable.bench_press, kg+" kg", reps+" Reps"));
+        GoalsView.goalsList.add(new GoalsItems(R.drawable.bench_press, kg+" kg", reps+" Reps"));
 
 
     }
@@ -29,12 +29,12 @@ public class AddNewWorkout extends AppCompatActivity {
         EditText editText2 = (EditText) findViewById(R.id.amountOfRepsSquat);
         String kg = editText.getText().toString();
         String reps = editText2.getText().toString();
-        goalsView.goalsList.add(new GoalsItems(R.drawable.squat, kg+" kg",   reps+" Reps"));
+        GoalsView.goalsList.add(new GoalsItems(R.drawable.squat, kg+" kg",   reps+" Reps"));
 
 
     }
     public void goBack(View view){
-        Intent intent = new Intent(this, goalsView.class);
+        Intent intent = new Intent(this, GoalsView.class);
         startActivity(intent);
     }
 

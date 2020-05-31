@@ -1,16 +1,9 @@
 package com.example.fitnessapp;
 
-import android.animation.IntArrayEvaluator;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
         SectionsStatePagerAdapter adapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "HomeFragment");
         adapter.addFragment(new WorkoutFragment(), "WorkoutFragment");
-        adapter.addFragment(new ProgressFragment(), "ProgressFragment");
         adapter.addFragment(new MaxLiftsFragment(), "MaxLiftsFragment");
-        adapter.addFragment(new GoalsFragment(), "GoalsFragments");
         viewPager.setAdapter(adapter);
     }
 

@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AddEditWorkoutActivity"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".AddNewWorkout" />
-        <activity android:name=".goalsView" />
+        <activity android:name=".AddNewGoal" />
+        <activity android:name=".GoalsView" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

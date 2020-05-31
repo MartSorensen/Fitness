@@ -11,7 +11,6 @@ import java.util.List;
 public class WorkoutViewModel extends AndroidViewModel {
     private WorkoutRepository repository;
     private LiveData<List<Workout>> allWorkouts;
-    private LiveData<List<Workout>> allWorkoutsByWeight;
     private LiveData<List<Workout>> allDistinctTitles;
 
 
@@ -19,7 +18,6 @@ public class WorkoutViewModel extends AndroidViewModel {
         super(application);
         repository = new WorkoutRepository(application);
         allWorkouts = repository.getAllWorkouts();
-        allWorkoutsByWeight = repository.getAllWorkoutsByWeight();
         allDistinctTitles = repository.getDistinctTitles();
     }
 
@@ -35,16 +33,8 @@ public class WorkoutViewModel extends AndroidViewModel {
         repository.delete(workout);
     }
 
-    public void deleteAllWorkouts() {
-        repository.deleteAllWorkouts();
-    }
-
     public LiveData<List<Workout>> getAllWorkouts() {
         return allWorkouts;
-    }
-
-    public LiveData<List<Workout>> getAllWorkoutsByWeight() {
-        return allWorkoutsByWeight;
     }
 
     public LiveData<List<Workout>> getAllDistinctTitles() {

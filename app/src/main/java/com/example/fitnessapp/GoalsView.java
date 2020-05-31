@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class goalsView extends AppCompatActivity {
+public class GoalsView extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private GoalsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -20,14 +20,13 @@ public class goalsView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals_view);
-       // workoutsList.add(new GoalsItems(R.drawable.bench_press, "0 kg", "0 Rep"));
         buildRecyclerView();
 
         Button addNewWorkoutBtn = (Button)findViewById(R.id.addNewGoalButton);
         addNewWorkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), com.example.fitnessapp.AddNewWorkout.class);
+                Intent startIntent = new Intent(getApplicationContext(), com.example.fitnessapp.AddNewGoal.class);
                 startActivity(startIntent);
 
             }

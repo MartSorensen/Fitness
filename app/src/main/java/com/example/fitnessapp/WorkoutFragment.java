@@ -140,6 +140,5 @@ public class WorkoutFragment extends Fragment {
             Toast.makeText(getContext(), "Workout not saved", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
 
